@@ -1,6 +1,12 @@
-DESSIGN PATTERNS PRACTICE
----
+# DESSIGN PATTERNS PRACTICE
+
 This is a excercise to practice the usage of dessign patterns, focused on:
 * Singleton
 * Strategy
 * Abstract factory
+
+### How to run it
+Make sure Java is already installed in your device and run the next command:
+```cmd
+javac Main.java && java Main
+```
