@@ -17,7 +17,8 @@ public class Main {
         KingdomFactory factory = null;
         try {
             factory = (KingdomFactory) Class.forName(kingdomName + "KingdomFactory").newInstance();
-            // factory = (KingdomFactory) (new OrcKingdomFactory()); // this is the same as the line above
+            // factory = (KingdomFactory) (new OrcKingdomFactory()); // this is the same as
+            // the line above
             System.out.println("The kingdom " + kingdomName + " has been created.");
         } catch (Exception e) {
             System.out.println("The kingdom " + kingdomName + " is not yet supported.");
@@ -36,6 +37,21 @@ public class Main {
 
     }
 
+    // creational getters
+    public Army getArmy(KingdomFactory factory) {
+        return factory.createArmy();
+    }
+
+    public Castle getCastle(KingdomFactory factory) {
+        return factory.createCastle();
+    }
+
+    public King getKing(KingdomFactory factory) {
+        return factory.createKing();
+    }
+
+    // pure getters
+
     public Army getArmy() {
         return army;
     }
@@ -48,12 +64,24 @@ public class Main {
         return king;
     }
 
-    public void createKingdom(KingdomFactory factory) {
-        // using abstract factory without setters
-        army = factory.createArmy();
-        castle = factory.createCastle();
-        king = factory.createKing();
+    // unused setters
+    private void setArmy(Army army) {
+        this.army = army;
+    }
 
+    private void setCastle(Castle castle) {
+        this.castle = castle;
+    }
+
+    private void setKing(King king) {
+        this.king = king;
+    }
+
+    public void createKingdom(KingdomFactory factory) {
+        // using abstract factory
+        army = getArmy(factory);
+        castle = getCastle(factory);
+        king = getKing(factory);
     }
 
     public static void main(String[] args) {
