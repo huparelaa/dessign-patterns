@@ -15,16 +15,19 @@ public class Main {
         input.close();
         // create the kingdom
         KingdomFactory factory = null;
-        try {
-            factory = (KingdomFactory) Class.forName(kingdomName + "KingdomFactory").newInstance();
-            // factory = (KingdomFactory) (new OrcKingdomFactory()); // this is the same as
-            // the line above
-            System.out.println("The kingdom " + kingdomName + " has been created.");
-        } catch (Exception e) {
-            System.out.println("The kingdom " + kingdomName + " is not yet supported.");
-            System.exit(0);
+        if (factory == null) { // Singleton guarantee that only one instance of the class is created
+            try {
+                factory = (KingdomFactory) Class.forName(kingdomName + "KingdomFactory").newInstance();
+                // factory = (KingdomFactory) (new OrcKingdomFactory()); // this is the same as
+                // the line above
+                System.out.println("The kingdom " + kingdomName + " has been created.");
+            } catch (Exception e) {
+                System.out.println("The kingdom " + kingdomName + " is not yet supported.");
+                System.exit(0);
+            }
+        } else {
+            System.out.println("The kingdom " + kingdomName + " has already been created.");
         }
-
         if (factory != null) {
             createKingdom(factory);
             System.out.println(getArmy().getDescription());
