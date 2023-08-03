@@ -30,12 +30,9 @@ public class Main {
         }
         if (factory != null) {
             createKingdom(factory);
-            System.out.println(getArmy().getDescription());
-            System.out.println(getCastle().getDescription());
-            System.out.println(getKing().getDescription());
-            // logger.info(getArmy().getDescription());
-            // logger.info(getCastle().getDescription());
-            // logger.info(getKing().getDescription());
+            logger.info(getArmy().getDescription());
+            logger.info(getCastle().getDescription());
+            logger.info(getKing().getDescription());
         }
 
     }
@@ -81,7 +78,7 @@ public class Main {
     }
 
     public void createKingdom(KingdomFactory factory) {
-        // using abstract factory
+        // using abstract factoriy
         army = getArmy(factory);
         castle = getCastle(factory);
         king = getKing(factory);
